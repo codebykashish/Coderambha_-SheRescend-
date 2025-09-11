@@ -1,0 +1,86 @@
+/* --- Header --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007BFF; /* Blue */
+  color: white;
+  padding: 18px 20px;
+}
+
+#guide-title {
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.header-controls button {
+  background: white;
+  color: #007BFF;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header-controls button:hover {
+  background: #e6e6e6;
+}
+
+.back-btn {
+  background: white;
+  color: #007BFF;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-btn:hover {
+  background: #e6e6e6;
+}
+
+/* --- Categories grid --- */
+#categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 16px;
+  padding: 20px;
+}
+
+/* --- Category box --- */
+.category {
+  background-color: #16a34a; /* pleasant green */
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  min-height: 140px;
+}
+
+.category:hover {
+  background-color: #15803d;
+  transform: scale(1.03);
+}
+
+.category .icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.category h2 {
+  margin: 6px 0;
+  font-size: 1.3rem;
+}
+
+.category p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  margin: 0;
+}

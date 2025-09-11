@@ -1,0 +1,79 @@
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007BFF;
+  color: white;
+  padding: 18px 20px;
+}
+
+#firstaid-title {
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.header-controls button,
+.back-btn {
+  background: white;
+  color: #007BFF;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header-controls button:hover,
+.back-btn:hover {
+  background: #e6e6e6;
+}
+
+/* Main container */
+#firstaid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Topic box */
+.topic-box {
+  background-color: #16a34a; /* green theme */
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topic-box h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Steps */
+.step {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.step p {
+  margin: 0;
+  font-size: 1rem;
+}
