@@ -2,16 +2,17 @@ const container = document.getElementById("diseases-container");
 const langToggle = document.getElementById("lang-toggle");
 const title = document.getElementById("diseases-title");
 
-let currentLang = "english";
+function mapCodeToDataLang(code) { return code === 'np' ? 'nepali' : 'english'; }
+function toggleLabel(code) { return code === 'en' ? 'नेपाली' : 'English'; }
 
-// Function to render diseases
-function renderDiseases(language) {
+let currentLangCode = localStorage.getItem('lang') || 'en';
+
+function renderDiseasesByCode(code) {
+  const lang = mapCodeToDataLang(code);
   container.innerHTML = "";
+  title.textContent = code === "en" ? "Waterborne Diseases" : "पानीजन्य रोगहरू";
 
-  // Update page title
-  title.textContent = language === "english" ? "Waterborne Diseases" : "पानीजन्य रोगहरू";
-
-  diseasesData[language].forEach(disease => {
+  diseasesData[lang].forEach(disease => {
     const box = document.createElement("div");
     box.className = "disease-box";
     box.innerHTML = `
@@ -21,14 +22,22 @@ function renderDiseases(language) {
     `;
     container.appendChild(box);
   });
+
+  langToggle.textContent = toggleLabel(code);
 }
 
-// Toggle language
 langToggle.addEventListener("click", () => {
-  currentLang = currentLang === "english" ? "nepali" : "english";
-  langToggle.textContent = currentLang === "english" ? "English" : "नेपाली";
-  renderDiseases(currentLang);
+  currentLangCode = currentLangCode === "en" ? "np" : "en";
+  localStorage.setItem('lang', currentLangCode);
+  renderDiseasesByCode(currentLangCode);
 });
 
-// Initial load
-renderDiseases(currentLang);
+window.addEventListener('storage', (e) => {
+  if (e.key === 'lang' && e.newValue) {
+    currentLangCode = e.newValue;
+    renderDiseasesByCode(currentLangCode);
+  }
+});
+
+// Initial
+renderDiseasesByCode(currentLangCode);

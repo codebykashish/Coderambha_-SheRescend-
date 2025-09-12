@@ -2,13 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('firstaid-container');
   const langToggle = document.getElementById('lang-toggle');
 
-  let currentLang = localStorage.getItem('lang') || 'en';
+  // Map shared code -> data keys
+  function mapCodeToDataLang(code) { return code === 'np' ? 'ne' : 'en'; }
+  function toggleLabel(code) { return code === 'en' ? 'नेपाली' : 'English'; }
 
-  // Generate all topic boxes once
+  let currentLangCode = localStorage.getItem('lang') || 'en';
+
+  // Build all topic boxes once (from EN structure for stable indexing)
   firstAidData.en.forEach((topic, idx) => {
     const box = document.createElement('div');
     box.className = 'topic-box';
-    box.dataset.index = idx; // store index for language switching
+    box.dataset.index = idx;
 
     const title = document.createElement('h2');
     title.innerHTML = `${topic.icon} <span class="topic-title">${topic.title}</span>`;
@@ -35,12 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(box);
   });
 
-  // Function to switch language text
-  function switchLanguage(lang) {
+  // Switch language text using code -> data key mapping
+  function switchLanguage(langCode) {
+    const dataLang = mapCodeToDataLang(langCode);
     const boxes = document.querySelectorAll('.topic-box');
+
     boxes.forEach(box => {
-      const idx = box.dataset.index;
-      const topic = firstAidData[lang][idx];
+      const idx = Number(box.dataset.index);
+      const topic = firstAidData[dataLang][idx];
 
       box.querySelector('.topic-title').textContent = topic.title;
 
@@ -50,16 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    langToggle.textContent = lang === 'en' ? 'नेपाली' : 'English';
-    localStorage.setItem('lang', lang);
+    langToggle.textContent = toggleLabel(langCode);
+    localStorage.setItem('lang', langCode);
   }
 
   // Initialize with saved language
-  switchLanguage(currentLang);
+  switchLanguage(currentLangCode);
 
-  // Toggle button
+  // Toggle button (single handler)
   langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'ne' : 'en';
-    switchLanguage(currentLang);
+    currentLangCode = currentLangCode === 'en' ? 'np' : 'en';
+    switchLanguage(currentLangCode);
+  });
+
+  // Optional: sync if changed from another page/tab
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'lang' && e.newValue) {
+      currentLangCode = e.newValue;
+      switchLanguage(currentLangCode);
+    }
   });
 });

@@ -12,26 +12,23 @@
     <h1 id="app-title">DisasterWise</h1>
     <div class="header-controls">
       <button id="guide-btn" onclick="window.location.href='guide.html'">🩺 Guide</button>
+      <button id="game-btn" onclick="window.location.href='game.html'">🎮 Game</button>
       <button id="helpline-btn" class="btn-danger">📞 Helpline</button>
       <button id="lang-toggle">English</button>
     </div>
   </header>
 
   <main>
-    <!-- Search row -->
     <section id="search-section">
       <input id="place-search" type="text" placeholder="Search places..." />
       <button id="search-icon" aria-label="Search">🔍</button>
     </section>
 
-    <!-- Map -->
     <div id="map-container">
       <div id="map"></div>
 
-      <!-- SOS button -->
       <button id="sos-btn" aria-label="Emergency (SOS)" title="Emergency (SOS)">SOS</button>
 
-      <!-- SOS popup card (click outside to close) -->
       <div id="sos-card" class="hidden" role="dialog" aria-modal="true" tabindex="-1">
         <div class="sos-card-body">
           <div><strong>👮 <span data-i18n="policeLabel">Police</span>:</strong> 100</div>
@@ -42,7 +39,6 @@
         </div>
       </div>
 
-      <!-- Locate toggle -->
       <button id="locate-btn" aria-label="My location" title="My location">📍</button>
     </div>
   </main>

@@ -1,11 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("water-container");
   const langToggle = document.getElementById("lang-toggle");
-  let currentLang = localStorage.getItem("lang") || "en";
+  const titleEl = document.getElementById("water-title");
+  const backBtn = document.querySelector(".back-btn"); // ADD THIS
 
-  function renderWater() {
+  function mapCodeToDataLang(code) { return code === 'np' ? 'ne' : 'en'; }
+  function toggleLabel(code) { return code === 'en' ? 'नेपाली' : 'English'; }
+
+  let currentLangCode = localStorage.getItem("lang") || "en";
+
+  function render() {
+    const dataLang = mapCodeToDataLang(currentLangCode);
     container.innerHTML = "";
-    waterData[currentLang].forEach(topic => {
+
+    if (titleEl) {
+      titleEl.textContent = currentLangCode === "en"
+        ? "Water Purification Methods"
+        : "पानी शुद्धीकरणका तरिकाहरू";
+    }
+
+    // Set Back button label
+    if (backBtn) {
+      backBtn.textContent = currentLangCode === "en" ? "⬅ Back" : "⬅ पछाडि";
+    }
+
+    (waterData[dataLang] || []).forEach(topic => {
       const box = document.createElement("div");
       box.classList.add("water-box");
 
@@ -18,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         stepDiv.classList.add("step");
 
         const img = document.createElement("img");
-        img.src = step.img; // replace with your local images
+        img.src = step.img;
         img.alt = `Step ${index + 1}`;
 
         const text = document.createElement("div");
@@ -27,22 +46,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         stepDiv.appendChild(img);
         stepDiv.appendChild(text);
-
         box.appendChild(stepDiv);
       });
 
       container.appendChild(box);
     });
+
+    langToggle.textContent = toggleLabel(currentLangCode);
   }
 
   langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "en" ? "ne" : "en";
-    localStorage.setItem("lang", currentLang);
-    langToggle.textContent = currentLang === "en" ? "English" : "नेपाली";
-    renderWater();
+    currentLangCode = currentLangCode === "en" ? "np" : "en";
+    localStorage.setItem("lang", currentLangCode);
+    render();
   });
 
-  // Initial render
-  langToggle.textContent = currentLang === "en" ? "English" : "नेपाली";
-  renderWater();
+  window.addEventListener("storage", (e) => {
+    if (e.key === "lang" && e.newValue) {
+      currentLangCode = e.newValue;
+      render();
+    }
+  });
+
+  render();
 });

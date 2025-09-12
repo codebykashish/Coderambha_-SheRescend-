@@ -1,11 +1,15 @@
 const container = document.getElementById("fandw-container");
 const langToggle = document.getElementById("lang-toggle");
 
-let currentLang = "english";
+function mapCodeToDataLang(code) { return code === 'np' ? 'nepali' : 'english'; }
+function toggleLabel(code) { return code === 'en' ? 'नेपाली' : 'English'; }
 
-function renderBoxes(language) {
+let currentLangCode = localStorage.getItem('lang') || 'en';
+
+function renderBoxesByCode(code) {
+  const dataLang = mapCodeToDataLang(code);
   container.innerHTML = "";
-  fandwData[language].forEach(item => {
+  fandwData[dataLang].forEach(item => {
     const box = document.createElement("div");
     box.className = "fandw-box";
     box.innerHTML = `
@@ -15,14 +19,21 @@ function renderBoxes(language) {
     `;
     container.appendChild(box);
   });
+  langToggle.textContent = toggleLabel(code);
 }
 
-// Language toggle
 langToggle.addEventListener("click", () => {
-  currentLang = currentLang === "english" ? "nepali" : "english";
-  langToggle.textContent = currentLang === "english" ? "English" : "नेपाली";
-  renderBoxes(currentLang);
+  currentLangCode = currentLangCode === 'en' ? 'np' : 'en';
+  localStorage.setItem('lang', currentLangCode);
+  renderBoxesByCode(currentLangCode);
 });
 
-// Initial load
-renderBoxes(currentLang);
+window.addEventListener('storage', (e) => {
+  if (e.key === 'lang' && e.newValue) {
+    currentLangCode = e.newValue;
+    renderBoxesByCode(currentLangCode);
+  }
+});
+
+// Initial
+renderBoxesByCode(currentLangCode);

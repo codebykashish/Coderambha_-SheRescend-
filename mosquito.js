@@ -1,10 +1,13 @@
 const container = document.getElementById("mosquito-container");
 const langToggle = document.getElementById("lang-toggle");
 
-let currentLang = "english";
+function mapCodeToDataLang(code) { return code === 'np' ? 'nepali' : 'english'; }
+function toggleLabel(code) { return code === 'en' ? 'नेपाली' : 'English'; }
 
-// Function to render boxes
-function renderMosquito(lang) {
+let currentLangCode = localStorage.getItem('lang') || 'en';
+
+function renderMosquitoByCode(code) {
+  const lang = mapCodeToDataLang(code);
   container.innerHTML = "";
   mosquitoData[lang].forEach(item => {
     const box = document.createElement("div");
@@ -16,14 +19,20 @@ function renderMosquito(lang) {
     `;
     container.appendChild(box);
   });
+  langToggle.textContent = toggleLabel(code);
 }
 
-// Toggle language
 langToggle.addEventListener("click", () => {
-  currentLang = currentLang === "english" ? "nepali" : "english";
-  langToggle.textContent = currentLang === "english" ? "English" : "नेपाली";
-  renderMosquito(currentLang);
+  currentLangCode = currentLangCode === "en" ? "np" : "en";
+  localStorage.setItem('lang', currentLangCode);
+  renderMosquitoByCode(currentLangCode);
 });
 
-// Initial render
-renderMosquito(currentLang);
+window.addEventListener('storage', (e) => {
+  if (e.key === 'lang' && e.newValue) {
+    currentLangCode = e.newValue;
+    renderMosquitoByCode(currentLangCode);
+  }
+});
+
+renderMosquitoByCode(currentLangCode);
