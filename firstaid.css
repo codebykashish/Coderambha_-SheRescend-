@@ -37,7 +37,7 @@ header {
   padding: 20px;
 }
 
-/* Topic box */
+/* Topic box - ALL boxes get same styling */
 .topic-box {
   background-color: #16a34a; /* green theme */
   color: white;
@@ -56,24 +56,77 @@ header {
   gap: 10px;
 }
 
-/* Steps */
+/* Steps container - 2 columns for ALL boxes */
+.steps-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Individual step - same for ALL boxes */
 .step {
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 8px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  text-align: center;
+  gap: 8px;
 }
 
 .step img {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .step p {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* For odd number of steps, center the last one */
+.steps-container:has(.step:nth-child(odd):last-child) {
+  grid-template-columns: 1fr 1fr;
+}
+
+.steps-container:has(.step:nth-child(odd):last-child) .step:last-child {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+/* Mobile: single column for ALL boxes */
+@media (max-width: 768px) {
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .step img {
+    width: 70px;
+    height: 70px;
+  }
+}
+/* Add to your firstaid.css */
+.step img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.step img:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.step img:active {
+  transform: scale(0.95);
 }

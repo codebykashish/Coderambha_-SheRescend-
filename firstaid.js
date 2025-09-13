@@ -1,12 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('firstaid-container');
   const langToggle = document.getElementById('lang-toggle');
+  const backBtn = document.querySelector('.back-btn');
 
   // Map shared code -> data keys
   function mapCodeToDataLang(code) { return code === 'np' ? 'ne' : 'en'; }
   function toggleLabel(code) { return code === 'en' ? 'नेपाली' : 'English'; }
 
   let currentLangCode = localStorage.getItem('lang') || 'en';
+  let currentSpeech = null; // Track current speech
+
+  // Text-to-speech function
+  function speakText(text, lang) {
+    // Stop any current speech
+    if (currentSpeech) {
+      speechSynthesis.cancel();
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Set language based on current language
+    if (lang === 'np') {
+      utterance.lang = 'ne-NP'; // Nepali
+    } else {
+      utterance.lang = 'en-US'; // English
+    }
+    
+    utterance.rate = 0.8; // Slightly slower for clarity
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    // Store reference to current speech
+    currentSpeech = utterance;
+    
+    utterance.onend = () => {
+      currentSpeech = null;
+    };
+
+    speechSynthesis.speak(utterance);
+  }
 
   // Build all topic boxes once (from EN structure for stable indexing)
   firstAidData.en.forEach((topic, idx) => {
@@ -18,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     title.innerHTML = `${topic.icon} <span class="topic-title">${topic.title}</span>`;
     box.appendChild(title);
 
+    // Create steps container
+    const stepsContainer = document.createElement('div');
+    stepsContainer.className = 'steps-container';
+
     topic.steps.forEach((step, i) => {
       const stepDiv = document.createElement('div');
       stepDiv.className = 'step';
@@ -26,6 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('img');
       img.src = step.img;
       img.alt = `Step ${i+1}`;
+      img.style.cursor = 'pointer'; // Show it's clickable
+      img.title = 'Tap to hear text'; // Tooltip
+      
+      // Add click event to speak the text
+      img.addEventListener('click', () => {
+        const stepText = stepDiv.querySelector('.step-text').textContent;
+        speakText(stepText, currentLangCode);
+      });
+      
       stepDiv.appendChild(img);
 
       const p = document.createElement('p');
@@ -33,9 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
       p.textContent = `Step ${i+1}: ${step.text}`;
       stepDiv.appendChild(p);
 
-      box.appendChild(stepDiv);
+      stepsContainer.appendChild(stepDiv);
     });
 
+    box.appendChild(stepsContainer);
     container.appendChild(box);
   });
 
@@ -43,6 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function switchLanguage(langCode) {
     const dataLang = mapCodeToDataLang(langCode);
     const boxes = document.querySelectorAll('.topic-box');
+
+    // Update back button
+    if (backBtn) {
+      backBtn.textContent = langCode === 'en' ? '⬅ Back' : '⬅ पछाडि';
+    }
 
     boxes.forEach(box => {
       const idx = Number(box.dataset.index);
