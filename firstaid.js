@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentLangCode = localStorage.getItem('lang') || 'en';
   let currentSpeech = null; // Track current speech
+  let currentAudio = null;  // Track current CPR audio
 
   // Text-to-speech function
   function speakText(text, lang) {
@@ -18,21 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    
+
     // Set language based on current language
     if (lang === 'np') {
       utterance.lang = 'ne-NP'; // Nepali
     } else {
       utterance.lang = 'en-US'; // English
     }
-    
+
     utterance.rate = 0.8; // Slightly slower for clarity
     utterance.pitch = 1;
     utterance.volume = 1;
 
     // Store reference to current speech
     currentSpeech = utterance;
-    
+
     utterance.onend = () => {
       currentSpeech = null;
     };
@@ -40,11 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
     speechSynthesis.speak(utterance);
   }
 
+  // Play CPR audio (only Nepali CPR)
+  function playCprAudio(stepIndex) {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+    const audio = new Audio(`${stepIndex + 1}.mp3`); // files: 1.mp3 ... 5.mp3
+    currentAudio = audio;
+    audio.play();
+  }
+
   // Build all topic boxes once (from EN structure for stable indexing)
   firstAidData.en.forEach((topic, idx) => {
     const box = document.createElement('div');
     box.className = 'topic-box';
     box.dataset.index = idx;
+    box.dataset.id = topic.id;
 
     const title = document.createElement('h2');
     title.innerHTML = `${topic.icon} <span class="topic-title">${topic.title}</span>`;
@@ -64,13 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
       img.alt = `Step ${i+1}`;
       img.style.cursor = 'pointer'; // Show it's clickable
       img.title = 'Tap to hear text'; // Tooltip
-      
-      // Add click event to speak the text
+
+      // Add click event to speak or play audio
       img.addEventListener('click', () => {
+        const boxId = box.dataset.id;
         const stepText = stepDiv.querySelector('.step-text').textContent;
-        speakText(stepText, currentLangCode);
+
+        // If Nepali CPR, play audio instead of TTS
+        if (currentLangCode === 'np' && boxId === 'cpr') {
+          playCprAudio(i);
+        } else {
+          speakText(stepText, currentLangCode);
+        }
       });
-      
+
       stepDiv.appendChild(img);
 
       const p = document.createElement('p');
