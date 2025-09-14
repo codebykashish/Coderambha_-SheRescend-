@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="steps">
           ${method.steps.map(s => `
             <div class="step">
-              <img src="${s.img}" alt="${s.text}">
               <p>${s.text}</p>
             </div>
           `).join('')}

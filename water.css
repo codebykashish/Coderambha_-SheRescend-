@@ -13,7 +13,7 @@ header h1 {
   font-size: 1.5em;
 }
 
-/* Header controls + Back button (match other pages) */
+/* Header controls + Back button */
 .header-controls {
   display: flex;
   gap: 10px;
@@ -51,6 +51,7 @@ body {
   gap: 14px;
 }
 
+/* Responsive 2-column layout on larger screens */
 @media (min-width: 720px) {
   #water-container {
     grid-template-columns: 1fr 1fr;
@@ -58,10 +59,9 @@ body {
 }
 
 /* --- Water card --- */
-/* Lightest blue card with subtle lift on hover */
 .water-box {
-  background: #eff6ff;             /* very light blue */
-  border: 1px solid #dbeafe;       /* light blue border */
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 4px 10px rgba(30, 64, 175, 0.08);
@@ -71,13 +71,13 @@ body {
 .water-box:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(30, 64, 175, 0.12);
-  background: #eaf2ff;             /* slight hover tint */
+  background: #eaf2ff;
 }
 
 .water-box h2 {
   margin: 0 0 10px 0;
   font-size: 1.1rem;
-  color: #1e3a8a;                  /* dark blue */
+  color: #1e3a8a;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -86,38 +86,35 @@ body {
 /* --- Steps --- */
 .step {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   padding: 10px 12px;
-  background: rgba(219, 234, 254, 0.55);  /* soft blue tint */
+  background: rgba(219, 234, 254, 0.55);
   border: 1px solid #bfdbfe;
   border-radius: 10px;
   margin-top: 8px;
 }
 
-.step img {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #c7d2fe;
-  background: #fff;
-}
-
 .step .step-text {
   margin: 0;
-  color: #0f172a;                  /* slate-900 */
+  color: #0f172a;
   font-size: 0.98rem;
   line-height: 1.35rem;
 }
 
-/* Small screens */
+/* --- Video styling --- */
+#water-video {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* Small screens adjustments */
 @media (max-width: 420px) {
   .step {
     align-items: flex-start;
-  }
-  .step img {
-    width: 48px;
-    height: 48px;
   }
 }

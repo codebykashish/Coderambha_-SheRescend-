@@ -17,11 +17,11 @@ const firstAidData = {
       title: "Hypothermia / Cold Shock",
       icon: "🥶",
       steps: [
-        { text: "Move to warm, dry shelter. Remove wet clothing.", img: "hypstep1.png" },
-        { text: "Warm gradually with blankets or body heat.", img: "hypstep2.png" },
-        { text: "Do not rub limbs or use direct heat.", img: "hypstep3.png" },
-        { text: "Monitor breathing and start CPR if necessary.", img: "hypstep4.png" },
-        { text: "Seek medical attention as soon as possible.", img: "hypstep5.png" }
+        { text: "Move to warm, dry shelter. Remove wet clothing.", img: "step1.avif" },
+        { text: "Warm gradually with blankets or body heat.", img: "step2.png" },
+        { text: "Do not rub limbs or use direct heat.", img: "step3.jpeg" },
+        { text: "Monitor breathing and start CPR if necessary.", img: "step4.jpg" },
+        { text: "Seek medical attention as soon as possible.", img: "step5.jpeg" }
       ]
     },
     {
@@ -29,12 +29,12 @@ const firstAidData = {
       title: "Bleeding & Wound Care",
       icon: "🩹",
       steps: [
-        { text: "Wear gloves if available.", img: "bleedstep1.png" },
-        { text: "Apply direct pressure with clean cloth or bandage.", img: "bleedstep2.png" },
-        { text: "Elevate limb if no fracture suspected.", img: "bleedstep3.png" },
-        { text: "If bleeding soaks through, add more layers.", img: "bleedstep4.png" },
-        { text: "Clean around wound and cover with sterile dressing.", img: "bleedstep5.png" },
-        { text: "Seek medical care if severe.", img: "bleedstep6.png" }
+        { text: "Wear gloves if available.", img: "step1.avif" },
+        { text: "Apply direct pressure with clean cloth or bandage.", img: "step2.png" },
+        { text: "Elevate limb if no fracture suspected.", img: "step3.jpeg" },
+        { text: "If bleeding soaks through, add more layers.", img: "step4.jpg" },
+        { text: "Clean around wound and cover with sterile dressing.", img: "step5.jpeg" },
+        { text: "Seek medical care if severe.", img: "cpstep5.png" }
       ]
     },
     {
@@ -42,11 +42,11 @@ const firstAidData = {
       title: "Fractures",
       icon: "🦴",
       steps: [
-        { text: "Immobilize the injured area.", img: "fracture1.png" },
-        { text: "Apply a splint if trained.", img: "fracture2.png" },
-        { text: "Apply cold pack to reduce swelling.", img: "fracture3.png" },
-        { text: "Control any bleeding.", img: "fracture4.png" },
-        { text: "Seek medical attention promptly.", img: "fracture5.png" }
+        { text: "Immobilize the injured area.", img: "i.jpg" },
+        { text: "Apply a splint if trained.", img: "ii.jpg" },
+        { text: "Apply cold pack to reduce swelling.", img: "iii.webp" },
+        { text: "Control any bleeding.", img: "iv.png" },
+        { text: "Seek medical attention promptly.", img: "cpstep5.png" }
       ]
     },
     {
@@ -54,12 +54,12 @@ const firstAidData = {
       title: "Sprains",
       icon: "🦵",
       steps: [
-        { text: "Follow R.I.C.E: Rest, Ice, Compression, Elevation.", img: "sprain1.png" },
-        { text: "Rest the joint and avoid weight-bearing.", img: "sprain2.png" },
-        { text: "Ice 15–20 mins every 2–3 hours.", img: "sprain3.png" },
-        { text: "Apply elastic compression bandage.", img: "sprain4.png" },
-        { text: "Elevate above heart level.", img: "sprain5.png" },
-        { text: "Seek care if severe pain or deformity.", img: "sprain6.png" }
+        { text: "Follow R.I.C.E: Rest, Ice, Compression, Elevation.", img: "1.png" },
+        { text: "Rest the joint and avoid weight-bearing.", img: "2.png" },
+        { text: "Ice 15–20 mins every 2–3 hours.", img: "3.png" },
+        { text: "Apply elastic compression bandage.", img: "4.png" },
+        { text: "Elevate above heart level.", img: "5.png" },
+        { text: "Seek care if severe pain or deformity.", img: "cpstep5.png" }
       ]
     },
     {
@@ -119,11 +119,11 @@ const firstAidData = {
       title: "हाइपोथर्मिया / चिसो झड्का",
       icon: "🥶",
       steps: [
-        { text: "न्यानो, सुख्खा ठाउँमा लैजानुहोस्। भिजेको लुगा फेर्नुहोस्।", img: "hypstep1.png" },
-        { text: "बिस्तारै कम्बल वा शरीरको तापबाट न्यानो बनाउनुहोस्।", img: "hypstep2.png" },
-        { text: "जोडजाड नघस्नुहोस् वा सिधा तताउने प्रयोग नगर्नुहोस्।", img: "hypstep3.png" },
-        { text: "श्वास निगरानी गर्नुहोस्; आवश्यक परे सीपीआर सुरु गर्नुहोस्।", img: "hypstep4.png" },
-        { text: "छिटो चिकित्सा सेवा खोज्नुहोस्।", img: "hypstep5.png" }
+        { text: "न्यानो, सुख्खा ठाउँमा लैजानुहोस्। भिजेको लुगा फेर्नुहोस्।", img: "step1.avif" },
+        { text: "बिस्तारै कम्बल वा शरीरको तापबाट न्यानो बनाउनुहोस्।", img: "step2.png" },
+        { text: "जोडजाड नघस्नुहोस् वा सिधा तताउने प्रयोग नगर्नुहोस्।", img: "step3.jpeg" },
+        { text: "श्वास निगरानी गर्नुहोस्; आवश्यक परे सीपीआर सुरु गर्नुहोस्।", img: "step4.jpg" },
+        { text: "छिटो चिकित्सा सेवा खोज्नुहोस्।", img: "step5.jpeg" }
       ]
     },
     {
@@ -131,12 +131,12 @@ const firstAidData = {
       title: "रक्तस्राव नियन्त्रण र घाउ हेरचाह",
       icon: "🩹",
       steps: [
-        { text: "सम्भव भए पञ्जा लगाउनुहोस्।", img: "bleedstep1.png" },
-        { text: "सफा कपडा/ब्यान्डेजले दबाब दिनुहोस्।", img: "bleedstep2.png" },
-        { text: "हड्डी भाँचिएको शंका नभए अंग उठाउनुहोस्।", img: "bleedstep3.png" },
-        { text: "भिज्यो भने थप तह थप्नुहोस्।", img: "bleedstep4.png" },
-        { text: "सफा पानीले वरिपरि सफा गर्नुहोस् र स्टेराइल ड्रेसिङ लगाउनुहोस्।", img: "bleedstep5.png" },
-        { text: "गम्भीर भए उपचार खोज्नुहोस्।", img: "bleedstep6.png" }
+        { text: "सम्भव भए पञ्जा लगाउनुहोस्।", img: "step1.avif" },
+        { text: "सफा कपडा/ब्यान्डेजले दबाब दिनुहोस्।", img: "step2.png" },
+        { text: "हड्डी भाँचिएको शंका नभए अंग उठाउनुहोस्।", img: "step3.jpeg" },
+        { text: "भिज्यो भने थप तह थप्नुहोस्।", img: "step4.jpg" },
+        { text: "सफा पानीले वरिपरि सफा गर्नुहोस् र स्टेराइल ड्रेसिङ लगाउनुहोस्।", img: "step5.jpeg" },
+        { text: "गम्भीर भए उपचार खोज्नुहोस्।", img: "cpstep5.png" }
       ]
     },
     {
@@ -144,11 +144,11 @@ const firstAidData = {
       title: "हड्डी भाँचिनु",
       icon: "🦴",
       steps: [
-        { text: "घाइते भाग नचलाउनुहोस्।", img: "fracture1.png" },
-        { text: "सीप भए स्प्लिन्ट लगाउनुहोस्।", img: "fracture2.png" },
-        { text: "कपडाले बेरिएको चिसो सेक दिनुहोस्।", img: "fracture3.png" },
-        { text: "रक्तस्राव नियन्त्रण गर्नुहोस्।", img: "fracture4.png" },
-        { text: "छिटो चिकित्सा सेवा लिनुहोस्।", img: "fracture5.png" }
+        { text: "घाइते भाग नचलाउनुहोस्।", img: "i.jpg" },
+        { text: "सीप भए स्प्लिन्ट लगाउनुहोस्।", img: "ii.jpg" },
+        { text: "कपडाले बेरिएको चिसो सेक दिनुहोस्।", img: "iii.webp" },
+        { text: "रक्तस्राव नियन्त्रण गर्नुहोस्।", img: "iv.png" },
+        { text: "छिटो चिकित्सा सेवा लिनुहोस्।", img: "cpstep5.png" }
       ]
     },
     {
@@ -156,12 +156,12 @@ const firstAidData = {
       title: "मांसपेशी捻िनु",
       icon: "🦵",
       steps: [
-        { text: "R.I.C.E: विश्राम, बरफ, कम्प्रेसन, उचाल्नु।", img: "sprain1.png" },
-        { text: "जोइन्टलाई विश्राम दिनुहोस्; बोझ नदिनुहोस्।", img: "sprain2.png" },
-        { text: "पहिलो २४–४८ घण्टा: हरेक २–३ घण्टा १५–२० मिनेट बरफ।", img: "sprain3.png" },
-        { text: "इलास्टिक ब्यान्डेजले कम्प्रेसन (अति कसेर होइन)।", img: "sprain4.png" },
-        { text: "हृदयभन्दा माथि उचालेर राख्नुहोस्।", img: "sprain5.png" },
-        { text: "गम्भीर दुखाइ वा जोइन्ट बिग्रिए उपचार लिनुहोस्।", img: "sprain6.png" }
+        { text: "R.I.C.E: विश्राम, बरफ, कम्प्रेसन, उचाल्नु।", img: "1.png" },
+        { text: "जोइन्टलाई विश्राम दिनुहोस्; बोझ नदिनुहोस्।", img: "2.png" },
+        { text: "पहिलो २४–४८ घण्टा: हरेक २–३ घण्टा १५–२० मिनेट बरफ।", img: "3.png" },
+        { text: "इलास्टिक ब्यान्डेजले कम्प्रेसन (अति कसेर होइन)।", img: "4.png" },
+        { text: "हृदयभन्दा माथि उचालेर राख्नुहोस्।", img: "5.png" },
+        { text: "गम्भीर दुखाइ वा जोइन्ट बिग्रिए उपचार लिनुहोस्।", img: "cpstep5.png" }
       ]
     },
     {
