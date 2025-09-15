@@ -28,6 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLang(nextLang);
     markers.forEach((marker, i) => marker.setPopupContent(buildPopupHtml(markersData[i])));
   });
+  // --- Navigation: Helpline ---
+if (helplineBtn) {
+  helplineBtn.addEventListener('click', () => {
+    window.location.href = 'helpline.html';
+  });
+}
+
+// Navigation: Guide
+if (guideBtn) {
+  guideBtn.addEventListener('click', () => {
+    window.location.href = 'guide.html'; // replace with the actual file you want
+  });
+}
+
+// Navigation: Game
+if (gameBtn) {
+  gameBtn.addEventListener('click', () => {
+    window.location.href = 'game.html'; // replace with the actual file you want
+  });
+}
+
 
   const map = L.map('map', {
     minZoom: 13,

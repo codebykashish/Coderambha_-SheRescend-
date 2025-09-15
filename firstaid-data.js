@@ -13,17 +13,18 @@ const firstAidData = {
       ]
     },
     {
-      id: "hypothermia",
-      title: "Hypothermia / Cold Shock",
-      icon: "🥶",
-      steps: [
-        { text: "Move to warm, dry shelter. Remove wet clothing.", img: "step1.avif" },
-        { text: "Warm gradually with blankets or body heat.", img: "step2.png" },
-        { text: "Do not rub limbs or use direct heat.", img: "step3.jpeg" },
-        { text: "Monitor breathing and start CPR if necessary.", img: "step4.jpg" },
-        { text: "Seek medical attention as soon as possible.", img: "step5.jpeg" }
-      ]
-    },
+  id: "hypothermia",
+  title: "Hypothermia / Cold Shock",
+  icon: "🥶",
+  steps: [
+    { text: "Move the person to a warm, dry place.", img: "A.png" },
+    { text: "Help the patient lie down.", img: "B.png" },
+    { text: "Remove wet clothing and place the person in a blanket.", img: "C.png" },
+    { text: "Cover the head to retain body heat.", img: "D.png" },
+    { text: "Give the patient warm drinks and use hot water bottles or heat packs.", img: "E.png" }
+  ]
+},
+
     {
       id: "bleeding-wound",
       title: "Bleeding & Wound Care",
@@ -115,17 +116,17 @@ const firstAidData = {
       ]
     },
     {
-      id: "hypothermia",
-      title: "हाइपोथर्मिया / चिसो झड्का",
-      icon: "🥶",
-      steps: [
-        { text: "न्यानो, सुख्खा ठाउँमा लैजानुहोस्। भिजेको लुगा फेर्नुहोस्।", img: "step1.avif" },
-        { text: "बिस्तारै कम्बल वा शरीरको तापबाट न्यानो बनाउनुहोस्।", img: "step2.png" },
-        { text: "जोडजाड नघस्नुहोस् वा सिधा तताउने प्रयोग नगर्नुहोस्।", img: "step3.jpeg" },
-        { text: "श्वास निगरानी गर्नुहोस्; आवश्यक परे सीपीआर सुरु गर्नुहोस्।", img: "step4.jpg" },
-        { text: "छिटो चिकित्सा सेवा खोज्नुहोस्।", img: "step5.jpeg" }
-      ]
-    },
+  id: "hypothermia",
+  title: "हाइपोथर्मिया / चिसो झड्का",
+  icon: "🥶",
+  steps: [
+    { text: "व्यक्तिलाई न्यानो, सुख्खा ठाउँमा लैजानुहोस्।", img: "A.png" },
+    { text: "रोगीलाई सुत्न मद्दत गर्नुहोस्।", img: "B.png" },
+    { text: "भिजेको लुगा फेर्नुहोस् र व्यक्तिलाई कम्बलमा राख्नुहोस्।", img: "C.png" },
+    { text: "शरीरको ताप राख्न टाउको ढाक्नुहोस्।", img: "D.png" },
+    { text: "रोगीलाई न्यानो पेय दिनुहोस् र हट वाटर बोतल वा हीट प्याक प्रयोग गर्नुहोस्।", img: "E.png" }
+  ]
+},
     {
       id: "bleeding-wound",
       title: "रक्तस्राव नियन्त्रण र घाउ हेरचाह",
